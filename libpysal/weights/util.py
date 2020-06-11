@@ -24,7 +24,7 @@ __all__ = ['lat2W', 'block_weights', 'comb', 'order', 'higher_order',
            'insert_diagonal', 'get_ids', 'get_points_array_from_shapefile',
            'min_threshold_distance', 'lat2SW', 'w_local_cluster',
            'higher_order_sp', 'hexLat2W', 'attach_islands',
-           'nonplanar_neighbors', 'fuzzy_contiguity']
+           'nonplanar_neighbors', 'fuzzy_contiguity', 'xrast2W', 'xrast2SW']
 
 
 KDTREE_TYPES = [scipy.spatial.KDTree, scipy.spatial.cKDTree]
@@ -161,34 +161,30 @@ def lat2W(nrows=5, ncols=5, rook=True, id_type='int', **kwargs):
     n = nrows * ncols
     r1 = nrows - 1
     c1 = ncols - 1
-    rid = [i // ncols for i in range(n)] #must be floor!
+    rid = [i // ncols for i in range(n)]  # must be floor!
     cid = [i % ncols for i in range(n)]
-    w = {}
-    r = below = 0
+    w = defaultdict(list)
+    
     for i in range(n - 1):
         if rid[i] < r1:
-            below = rid[i] + 1
-            r = below * ncols + cid[i]
-            w[i] = w.get(i, []) + [r]
-            w[r] = w.get(r, []) + [i]
+            r = (rid[i] + 1) * ncols + cid[i]
+            w[i] += [r]
+            w[r] += [i]
         if cid[i] < c1:
-            right = cid[i] + 1
-            c = rid[i] * ncols + right
-            w[i] = w.get(i, []) + [c]
-            w[c] = w.get(c, []) + [i]
+            c = rid[i] * ncols + cid[i] + 1
+            w[i] += [c]
+            w[c] += [i]
         if not rook:
             # southeast bishop
             if cid[i] < c1 and rid[i] < r1:
                 r = (rid[i] + 1) * ncols + 1 + cid[i]
-                w[i] = w.get(i, []) + [r]
-                w[r] = w.get(r, []) + [i]
+                w[i] += [r]
+                w[r] += [i]
             # southwest bishop
             if cid[i] > 0 and rid[i] < r1:
                 r = (rid[i] + 1) * ncols - 1 + cid[i]
-                w[i] = w.get(i, []) + [r]
-                w[r] = w.get(r, []) + [i]
-
-    neighbors = {}
+                w[i] += [r]
+                w[r] += [i]
     weights = {}
     for key in w:
         weights[key] = [1.] * len(w[key])
@@ -209,6 +205,82 @@ def lat2W(nrows=5, ncols=5, rook=True, id_type='int', **kwargs):
         w = alt_w
         weights = alt_weights
     return W(w, weights, ids=ids, id_order=ids[:], **kwargs)
+
+
+def xrast2W(rasterf, rook=True, **kwargs):
+    """
+    Create a W object from rasters(xarray.DataArray)
+    
+    Parameters
+    ----------
+    raster     : xarray.DataArray
+                 raster file accessed using xarray.open_rasterio method
+    rook       : boolean
+                 type of contiguity. Default is rook. For queen, rook =False
+    **kwargs   : keyword arguments
+                 optional arguments for :class:`pysal.weights.W`
+    Returns
+    -------
+    w    : libpysal.weights.W
+           instance of spatial weights class W
+    data : pandas.Series
+           Values from `raster` as a vector of dimension (`w.n` x
+           None) aligned with `w`            
+    """
+    try:
+        import pandas as pd
+        import xarray as xr
+    except ImportError:
+        raise ImportError(
+            "pandas and xarray must be installed to use this method")
+
+    w = lat2W(*rasterf[0].shape, rook=rook, **kwargs)
+    if isinstance(rasterf, xr.DataArray):
+        rasterf_masked = rasterf.where(rasterf.data != rasterf.nodatavals[0])
+        rasterf_masked = rasterf_masked[0].data.flatten()
+        id_order = np.argwhere(~np.isnan(rasterf_masked)).flatten()
+        w = w_subset(w, id_order)
+        data = rasterf_masked[~np.isnan(rasterf_masked)]
+        data = pd.Series(data, index=id_order)
+    return w, data
+
+
+def xrast2SW(rasterf, criterion="rook"):
+    """
+    Generate a sparse W matrix from rasters(xarray.DataArray)
+    
+    Parameters
+    ----------
+    raster     : xarray.DataArray
+                 raster file accessed using xarray.open_rasterio method
+    rook       : {"rook", "queen"}
+                 type of contiguity. Default is rook.
+    Returns
+    -------
+    w    : scipy.sparse.csr_matrix
+           instance of a scipy sparse matrix
+    data : pandas.Series
+           Values from `raster` as a vector of dimension (`w.n` x
+           None) aligned with `w`            
+    """
+
+    try:
+        import pandas as pd
+        import xarray as xr
+    except ImportError:
+        raise ImportError(
+            "pandas and xarray must be installed to use this method")
+
+    sw = lat2SW(*rasterf[0].shape, criterion=criterion)
+    if isinstance(rasterf, xr.DataArray):
+        rasterf_masked = rasterf.where(rasterf.data != rasterf.nodatavals[0])
+        rasterf_masked = rasterf_masked[0].data.flatten()
+        sw = sw.multiply((~np.isnan(rasterf_masked))[np.newaxis].T)
+        sw = sw.multiply((~np.isnan(rasterf_masked))).tocsr()
+        id_order = np.argwhere(~np.isnan(rasterf_masked)).flatten()
+        data = rasterf_masked[~np.isnan(rasterf_masked)]
+        data = pd.Series(data, index=id_order)
+    return sw, data
 
 
 def block_weights(regimes, ids=None, sparse=False, **kwargs):
