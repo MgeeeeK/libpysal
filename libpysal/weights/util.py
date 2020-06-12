@@ -211,6 +211,39 @@ def lat2W(nrows=5, ncols=5, rook=True, id_type='int', **kwargs):
     return W(w, weights, ids=ids, id_order=ids[:], **kwargs)
 
 
+def toDataArray(rastdata, xrast, id_order=None):
+    """
+    Create a xarray.DataArray objects from data values. 
+
+    Arguments
+    ---------
+    rastdata    :   array
+                    data values stored in 1d array
+    xrast       :   xarray.DataArray
+                    original xarray.DataArray object
+    id_order    :   list, array
+                    Ordered sequence of IDs of weight object
+
+    Returns
+    -------
+
+    da : xarray.DataArray
+         
+    """
+    try:
+        import pandas as pd
+    except ImportError:
+        raise ImportError(
+            "pandas must be installed to use this method")
+    if id_order is not None:
+        rastdata = pd.Series(rastdata, index=id_order)
+    n = xrast.shape[1] * xrast.shape[2]
+    data = rastdata.reindex(index=range(n), fill_value=xrast.nodatavals[0])
+    da = xrast.copy()
+    da.data = data.values.reshape(da.data.shape)
+    return da
+
+
 def block_weights(regimes, ids=None, sparse=False, **kwargs):
     """
     Construct spatial weights for regime neighbors.
