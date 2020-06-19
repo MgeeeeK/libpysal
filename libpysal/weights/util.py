@@ -24,7 +24,7 @@ __all__ = ['lat2W', 'block_weights', 'comb', 'order', 'higher_order',
            'insert_diagonal', 'get_ids', 'get_points_array_from_shapefile',
            'min_threshold_distance', 'lat2SW', 'w_local_cluster',
            'higher_order_sp', 'hexLat2W', 'attach_islands',
-           'nonplanar_neighbors', 'fuzzy_contiguity']
+           'nonplanar_neighbors', 'fuzzy_contiguity','mask_sw_row','da_checker']
 
 
 KDTREE_TYPES = [scipy.spatial.KDTree, scipy.spatial.cKDTree]
@@ -1121,6 +1121,53 @@ def min_threshold_distance(data, p=2):
     nn = kd.query(data, k=2, p=p)
     nnd = nn[0].max(axis=0)[1]
     return nnd
+
+
+def da_checker(da, band=None):
+    """
+    xarray dataarray checker (currently only check band)
+
+    Parameters
+    ----------
+
+    da      : xarray.DataArray
+              raster file accessed using xarray.open_rasterio method
+    band    : int
+              user selected band 
+
+    """
+    if band is None:
+        if da.sizes['band'] != 1:
+            warn(f'Multiple bands detected in the raster. Using default band 1 for further computation')
+        band = 0
+
+    
+def mask_sw_row(sw, mask, id_order):
+    """
+    Set the rows to zero of the csr matrix
+    
+    Parameters
+    ----------
+    sw         : sparse.csr_matrix
+                 instance of sparse weight matrix 
+    mask       : boolean array
+                 mask array. Default is rook.
+    Returns
+    -------
+    w    : scipy.sparse.csr_matrix
+           instance of a scipy sparse matrix
+    data : pandas.Series
+           Values from `raster` as a vector of dimension (`w.n` x
+           None) aligned with `w`            
+    """
+    if not isinstance(sw, sparse.csr_matrix):
+        sw.tocsr()
+    nnz_per_row = np.diff(sw.indptr)
+    mask = np.repeat(mask, nnz_per_row)
+    nnz_per_row[id_order] = 0
+    sw.data = sw.data[mask]
+    sw.indices = sw.indices[mask]
+    sw.indptr[1:] = np.cumsum(nnz_per_row)
 
 
 def lat2SW(nrows=3, ncols=5, criterion="rook", row_st=False):
