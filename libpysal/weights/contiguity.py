@@ -7,6 +7,7 @@ from ..io.fileio import FileIO
 from ._contW_lists import ContiguityWeightsLists
 from .util import get_ids, get_points_array
 from .weights import WSP, W
+from .raster import da_checker, da2W, da2SW
 
 try:
     from shapely.geometry import Point as shapely_point
@@ -183,6 +184,33 @@ class Rook(W):
                                  id_order=id_order,
                                  **kwargs)
 
+    @classmethod
+    def from_xarray(cls, da, band=None, sparse=False, **kwargs):
+        """
+        Construct a weights object from a xarray dataarray. This will cast the polygons to PySAL polygons, then build the W
+        using ids from the dataframe.
+        
+        Parameters
+        ----------
+        da         : xarray.DataArray
+                    raster file accessed using xarray.open_rasterio method
+        band       : int
+                    select band for raster with multiple bands
+        sparse     : boolean
+                    type of weight object. Default is dense. For sparse, sparse = True
+        **kwargs   : keyword arguments
+                    optional arguments for :class:`pysal.weights.W`
+        See Also
+        --------
+        :class:`libpysal.weights.weights.W`   
+        """
+        band = da_checker(da, band)
+        if sparse:
+            w = da2SW(da[band-1:band], 'rook')
+        else:
+            w = da2W(da[band-1:band], 'rook', **kwargs)
+        return w
+
 
 class Queen(W):
     """
@@ -348,6 +376,32 @@ class Queen(W):
                               **kwargs)
         return w
 
+    @classmethod
+    def from_xarray(cls, da, band=None, sparse=False, **kwargs):
+        """
+        Construct a weights object from a xarray dataarray. This will cast the polygons to PySAL polygons, then build the W
+        using ids from the dataframe.
+        
+        Parameters
+        ----------
+        da         : xarray.DataArray
+                    raster file accessed using xarray.open_rasterio method
+        band       : int
+                    select band for raster with multiple bands
+        sparse     : boolean
+                    type of weight object. Default is dense. For sparse, sparse = True
+        **kwargs   : keyword arguments
+                    optional arguments for :class:`pysal.weights.W`
+        See Also
+        --------
+        :class:`libpysal.weights.weights.W`   
+        """
+        band = da_checker(da, band)
+        if sparse:
+            w = da2SW(da[band-1:band], 'queen')
+        else:
+            w = da2W(da[band-1:band], 'queen', **kwargs)
+        return w
 
 def Voronoi(points, criterion='rook', clip='ahull', **kwargs):
     """
