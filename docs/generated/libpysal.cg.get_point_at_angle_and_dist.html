@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>libpysal.cg.get_point_at_angle_and_dist &#8212; libpysal v4.2.2 Manual</title>
+    <title>libpysal.cg.get_point_at_angle_and_dist &#8212; libpysal v4.3.0 Manual</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pysal-styles.css" />
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           libpysal</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -70,18 +70,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html">Weights from GeoDataFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Weights-from-shapefiles-(without-geopandas)">Weights from shapefiles (without geopandas)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Lattice-Weights">Lattice Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Handling-nonplanar-geometries">Handling nonplanar geometries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html">Voronoi Polygons for 2-D Point Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html#Voronoi-Weights">Voronoi Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html">Datasets for use with libpysal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Backwards-compatibility-is-maintained">Backwards compatibility is maintained</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#available-is-updated"><code class="docutils literal notranslate"><span class="pre">available</span></code> is updated</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Remote-datasets">Remote datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Other-Remotes">Other Remotes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Grabbing-all-the-remotes">Grabbing all the remotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#spatial-weights">Spatial Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#example-datasets">Example Datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
@@ -142,12 +132,12 @@
 <code class="sig-prename descclassname">libpysal.cg.</code><code class="sig-name descname">get_point_at_angle_and_dist</code><span class="sig-paren">(</span><em class="sig-param">ray</em>, <em class="sig-param">angle</em>, <em class="sig-param">dist</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/cg/standalone.html#get_point_at_angle_and_dist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.cg.get_point_at_angle_and_dist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the point at a distance and angle relative to the origin of a ray.</p>
 <p>get_point_at_angle_and_dist(Ray, number, number) -&gt; Point</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>ray</strong><span class="classifier">the ray which the angle and distance are relative to</span></dt><dd></dd>
-<dt><strong>angle</strong><span class="classifier">the angle relative to the ray at which the point is located</span></dt><dd></dd>
-<dt><strong>dist</strong><span class="classifier">the distance from the ray origin at which the point is located</span></dt><dd></dd>
+<dd class="field-odd"><dl>
+<dt><strong>ray</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">ray</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">which</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">angle</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">and</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">are</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">relative</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code></span></dt><dd></dd>
+<dt><strong>angle</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">angle</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">relative</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">ray</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">at</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">which</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">point</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">is</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">located</span></code></span></dt><dd></dd>
+<dt><strong>dist</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">from</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">ray</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">origin</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">at</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">which</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">point</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">is</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">located</span></code></span></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -186,7 +176,7 @@
     </p>
     <p>
         &copy; Copyright 2018-, pysal developers.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
 </footer>

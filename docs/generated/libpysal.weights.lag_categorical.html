@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>libpysal.weights.lag_categorical &#8212; libpysal v4.2.2 Manual</title>
+    <title>libpysal.weights.lag_categorical &#8212; libpysal v4.3.0 Manual</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pysal-styles.css" />
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           libpysal</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -70,18 +70,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html">Weights from GeoDataFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Weights-from-shapefiles-(without-geopandas)">Weights from shapefiles (without geopandas)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Lattice-Weights">Lattice Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Handling-nonplanar-geometries">Handling nonplanar geometries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html">Voronoi Polygons for 2-D Point Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html#Voronoi-Weights">Voronoi Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html">Datasets for use with libpysal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Backwards-compatibility-is-maintained">Backwards compatibility is maintained</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#available-is-updated"><code class="docutils literal notranslate"><span class="pre">available</span></code> is updated</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Remote-datasets">Remote datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Other-Remotes">Other Remotes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Grabbing-all-the-remotes">Grabbing all the remotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#spatial-weights">Spatial Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#example-datasets">Example Datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
@@ -143,15 +133,15 @@
 <dd><p>Spatial lag operator for categorical variables.</p>
 <p>Constructs the most common categories of neighboring observations, weighted
 by their weight strength.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>w</strong><span class="classifier">W</span></dt><dd><p>PySAL spatial weightsobject</p>
+<dd class="field-odd"><dl>
+<dt><strong>w</strong><span class="classifier"><a class="reference internal" href="libpysal.weights.W.html#libpysal.weights.W" title="libpysal.weights.W"><code class="xref py py-obj docutils literal notranslate"><span class="pre">W</span></code></a></span></dt><dd><p>PySAL spatial weightsobject</p>
 </dd>
-<dt><strong>y</strong><span class="classifier">iterable</span></dt><dd><p>iterable collection of categories (either int or
+<dt><strong>y</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/glossary.html#term-iterable" title="(in Python v3.8)"><span>iterable</span></a></span></dt><dd><p>iterable collection of categories (either int or
 string) with dimensionality conforming to w (see examples)</p>
 </dd>
-<dt><strong>ties</strong><span class="classifier">str</span></dt><dd><p>string describing the method to use when resolving
+<dt><strong>ties</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>string describing the method to use when resolving
 ties. By default, the option is “tryself”,
 and the category of the focal observation
 is included with its neighbors to try
@@ -224,7 +214,7 @@ categorical variables with no ties.</p>
     </p>
     <p>
         &copy; Copyright 2018-, pysal developers.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
 </footer>

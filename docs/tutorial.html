@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Tutorial &#8212; libpysal v4.2.2 Manual</title>
+    <title>libpysal Tutorial &#8212; libpysal v4.3.0 Manual</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pysal-styles.css" />
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           libpysal</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -70,18 +70,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/weights.html">Weights from GeoDataFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/weights.html#Weights-from-shapefiles-(without-geopandas)">Weights from shapefiles (without geopandas)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/weights.html#Lattice-Weights">Lattice Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/weights.html#Handling-nonplanar-geometries">Handling nonplanar geometries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/voronoi.html">Voronoi Polygons for 2-D Point Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/voronoi.html#Voronoi-Weights">Voronoi Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/examples.html">Datasets for use with libpysal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/examples.html#Backwards-compatibility-is-maintained">Backwards compatibility is maintained</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/examples.html#available-is-updated"><code class="docutils literal notranslate"><span class="pre">available</span></code> is updated</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/examples.html#Remote-datasets">Remote datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/examples.html#Other-Remotes">Other Remotes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/examples.html#Grabbing-all-the-remotes">Grabbing all the remotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spatial-weights">Spatial Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-datasets">Example Datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>
@@ -105,7 +95,11 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Tutorial</a></li>
+<li><a class="reference internal" href="#">libpysal Tutorial</a><ul>
+<li><a class="reference internal" href="#spatial-weights">Spatial Weights</a></li>
+<li><a class="reference internal" href="#example-datasets">Example Datasets</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -135,17 +129,33 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="tutorial">
-<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="libpysal-tutorial">
+<h1>libpysal Tutorial<a class="headerlink" href="#libpysal-tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="spatial-weights">
+<h2>Spatial Weights<a class="headerlink" href="#spatial-weights" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/weights.html">Weights from GeoDataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/weights.html">Weights from GeoDataFrames</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/weights.html#Contiguity-Weights">Contiguity Weights</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/weights.html#Weights-from-shapefiles-(without-geopandas)">Weights from shapefiles (without geopandas)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/weights.html#Lattice-Weights">Lattice Weights</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/weights.html#Handling-nonplanar-geometries">Handling nonplanar geometries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/voronoi.html">Voronoi Polygons for 2-D Point Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/voronoi.html">Voronoi Polygons for 2-D Point Sets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/voronoi.html#Basic-Usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/voronoi.html#Larger-Problem">Larger Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/voronoi.html#Trimming">Trimming</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/voronoi.html#Voronoi-Weights">Voronoi Weights</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="example-datasets">
+<h2>Example Datasets<a class="headerlink" href="#example-datasets" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/examples.html">Datasets for use with libpysal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/examples.html#Backwards-compatibility-is-maintained">Backwards compatibility is maintained</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/examples.html#available-is-updated"><code class="docutils literal notranslate"><span class="pre">available</span></code> is updated</a></li>
@@ -153,6 +163,7 @@
 <li class="toctree-l1"><a class="reference internal" href="notebooks/examples.html#Other-Remotes">Other Remotes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/examples.html#Grabbing-all-the-remotes">Grabbing all the remotes</a></li>
 </ul>
+</div>
 </div>
 </div>
 
@@ -176,7 +187,7 @@
     </p>
     <p>
         &copy; Copyright 2018-, pysal developers.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
 </footer>

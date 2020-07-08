@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>libpysal.weights.w_local_cluster &#8212; libpysal v4.2.2 Manual</title>
+    <title>libpysal.weights.w_local_cluster &#8212; libpysal v4.3.0 Manual</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pysal-styles.css" />
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           libpysal</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -70,18 +70,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html">Weights from GeoDataFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Weights-from-shapefiles-(without-geopandas)">Weights from shapefiles (without geopandas)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Lattice-Weights">Lattice Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Handling-nonplanar-geometries">Handling nonplanar geometries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html">Voronoi Polygons for 2-D Point Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html#Voronoi-Weights">Voronoi Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html">Datasets for use with libpysal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Backwards-compatibility-is-maintained">Backwards compatibility is maintained</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#available-is-updated"><code class="docutils literal notranslate"><span class="pre">available</span></code> is updated</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Remote-datasets">Remote datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Other-Remotes">Other Remotes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Grabbing-all-the-remotes">Grabbing all the remotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#spatial-weights">Spatial Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#example-datasets">Example Datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
@@ -140,17 +130,17 @@
 <dl class="function">
 <dt id="libpysal.weights.w_local_cluster">
 <code class="sig-prename descclassname">libpysal.weights.</code><code class="sig-name descname">w_local_cluster</code><span class="sig-paren">(</span><em class="sig-param">w</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/weights/util.html#w_local_cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.weights.w_local_cluster" title="Permalink to this definition">¶</a></dt>
-<dd><p>Local clustering coefficients for each unit as a node in a graph. <span id="id1">[ws]</span></p>
-<dl class="field-list simple">
+<dd><p>Local clustering coefficients for each unit as a node in a graph.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>w</strong><span class="classifier">W</span></dt><dd><p>spatial weights object</p>
+<dd class="field-odd"><dl>
+<dt><strong>w</strong><span class="classifier"><a class="reference internal" href="libpysal.weights.W.html#libpysal.weights.W" title="libpysal.weights.W"><code class="xref py py-obj docutils literal notranslate"><span class="pre">W</span></code></a></span></dt><dd><p>spatial weights object</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>c</strong><span class="classifier">array</span></dt><dd><p>(w.n,1)
+<dd class="field-even"><dl>
+<dt><strong>c</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.18)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span></code></a></span></dt><dd><p>(w.n,1)
 local clustering coefficients</p>
 </dd>
 </dl>
@@ -159,13 +149,11 @@ local clustering coefficients</p>
 <p class="rubric">Notes</p>
 <p>The local clustering coefficient <span class="math notranslate nohighlight">\(c_i\)</span> quantifies how close the
 neighbors of observation <span class="math notranslate nohighlight">\(i\)</span> are to being a clique:</p>
-<blockquote>
-<div><div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight">
 \[c_i = | \{w_{j,k}\} |/ (k_i(k_i - 1)): j,k \in N_i\]</div>
-</div></blockquote>
 <p>where <span class="math notranslate nohighlight">\(N_i\)</span> is the set of neighbors to <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(k_i =
 |N_i|\)</span> and <span class="math notranslate nohighlight">\(\{w_{j,k}\}\)</span> is the set of non-zero elements of the
-weights between pairs in <span class="math notranslate nohighlight">\(N_i\)</span>.    <a class="bibtex reference internal" href="../references.html#watts1998" id="id2">[WS98]</a>._</p>
+weights between pairs in <span class="math notranslate nohighlight">\(N_i\)</span> <a class="bibtex reference internal" href="../references.html#watts1998" id="id1">[WS98]</a>.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">libpysal.weights</span> <span class="kn">import</span> <span class="n">lat2W</span><span class="p">,</span> <span class="n">w_local_cluster</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">lat2W</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">rook</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -205,7 +193,7 @@ weights between pairs in <span class="math notranslate nohighlight">\(N_i\)</spa
     </p>
     <p>
         &copy; Copyright 2018-, pysal developers.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
 </footer>

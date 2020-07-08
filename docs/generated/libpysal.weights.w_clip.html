@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>libpysal.weights.w_clip &#8212; libpysal v4.2.2 Manual</title>
+    <title>libpysal.weights.w_clip &#8212; libpysal v4.3.0 Manual</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pysal-styles.css" />
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           libpysal</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -70,18 +70,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html">Weights from GeoDataFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Weights-from-shapefiles-(without-geopandas)">Weights from shapefiles (without geopandas)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Lattice-Weights">Lattice Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Handling-nonplanar-geometries">Handling nonplanar geometries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html">Voronoi Polygons for 2-D Point Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html#Voronoi-Weights">Voronoi Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html">Datasets for use with libpysal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Backwards-compatibility-is-maintained">Backwards compatibility is maintained</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#available-is-updated"><code class="docutils literal notranslate"><span class="pre">available</span></code> is updated</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Remote-datasets">Remote datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Other-Remotes">Other Remotes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Grabbing-all-the-remotes">Grabbing all the remotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#spatial-weights">Spatial Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#example-datasets">Example Datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
@@ -144,28 +134,28 @@
 w2 has a non-zero value remain with non-zero values in w1.</p>
 <p>Checks on w1 and w2 are performed to make sure they conform to the
 appropriate format and, if not, they are converted.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>w1</strong><span class="classifier">W</span></dt><dd><p>W, scipy.sparse.csr.csr_matrix
+<dd class="field-odd"><dl>
+<dt><strong>w1</strong><span class="classifier"><a class="reference internal" href="libpysal.weights.W.html#libpysal.weights.W" title="libpysal.weights.W"><code class="xref py py-obj docutils literal notranslate"><span class="pre">W</span></code></a></span></dt><dd><p>W, scipy.sparse.csr.csr_matrix
 Potentially continuous weights matrix to be clipped. The clipped
 matrix wc will have at most the same elements as w1.</p>
 </dd>
-<dt><strong>w2</strong><span class="classifier">W</span></dt><dd><p>W, scipy.sparse.csr.csr_matrix
+<dt><strong>w2</strong><span class="classifier"><a class="reference internal" href="libpysal.weights.W.html#libpysal.weights.W" title="libpysal.weights.W"><code class="xref py py-obj docutils literal notranslate"><span class="pre">W</span></code></a></span></dt><dd><p>W, scipy.sparse.csr.csr_matrix
 Weights matrix to use as shell to clip w1. Automatically
 converted to binary format. Only non-zero elements in w2 will be
 kept non-zero in wc. NOTE: assumed to be of the same shape as w1</p>
 </dd>
-<dt><strong>outSP</strong><span class="classifier">boolean</span></dt><dd><p>If True (default) return sparse version of the clipped W, if
+<dt><strong>outSP</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.8)"><span class="xref std std-ref">bool</span></a></span></dt><dd><p>If True (default) return sparse version of the clipped W, if
 False, return W object of the clipped matrix</p>
 </dd>
-<dt><strong>**kwargs</strong><span class="classifier">keyword arguments</span></dt><dd><p>optional arguments for <code class="xref py py-class docutils literal notranslate"><span class="pre">pysal.weights.W</span></code></p>
+<dt><strong>**kwargs</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/keyword.html#module-keyword" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyword</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">arguments</span></code></span></dt><dd><p>optional arguments for <code class="xref py py-class docutils literal notranslate"><span class="pre">pysal.weights.W</span></code></p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>wc</strong><span class="classifier">W</span></dt><dd><p>W, scipy.sparse.csr.csr_matrix
+<dd class="field-even"><dl>
+<dt><strong>wc</strong><span class="classifier"><a class="reference internal" href="libpysal.weights.W.html#libpysal.weights.W" title="libpysal.weights.W"><code class="xref py py-obj docutils literal notranslate"><span class="pre">W</span></code></a></span></dt><dd><p>W, scipy.sparse.csr.csr_matrix
 Clipped W object (sparse if outSP=Ture). It inherits <code class="docutils literal notranslate"><span class="pre">id_order</span></code> from w1.</p>
 </dd>
 </dl>
@@ -270,7 +260,7 @@ gotten rid of those that happen across groups</p>
     </p>
     <p>
         &copy; Copyright 2018-, pysal developers.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
 </footer>

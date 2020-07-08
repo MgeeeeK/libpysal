@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>libpysal.cg.PolygonLocator &#8212; libpysal v4.2.2 Manual</title>
+    <title>libpysal.cg.PolygonLocator &#8212; libpysal v4.3.0 Manual</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pysal-styles.css" />
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           libpysal</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -70,18 +70,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html">Weights from GeoDataFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Weights-from-shapefiles-(without-geopandas)">Weights from shapefiles (without geopandas)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Lattice-Weights">Lattice Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Handling-nonplanar-geometries">Handling nonplanar geometries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html">Voronoi Polygons for 2-D Point Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html#Voronoi-Weights">Voronoi Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html">Datasets for use with libpysal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Backwards-compatibility-is-maintained">Backwards compatibility is maintained</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#available-is-updated"><code class="docutils literal notranslate"><span class="pre">available</span></code> is updated</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Remote-datasets">Remote datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Other-Remotes">Other Remotes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Grabbing-all-the-remotes">Grabbing all the remotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#spatial-weights">Spatial Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#example-datasets">Example Datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
@@ -146,10 +136,10 @@
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">polygons</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/cg/locators.html#PolygonLocator.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.cg.PolygonLocator.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a polygon locator object.</p>
 <p>__init__(Polygon list) -&gt; PolygonLocator</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>polygons</strong><span class="classifier">a list of polygons to index</span></dt><dd></dd>
+<dd class="field-odd"><dl>
+<dt><strong>polygons</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">a</span></code> <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">polygons</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></span></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -205,7 +195,7 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>list of polygons containing point</dt><dd></dd>
+<dt><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">polygons</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">containing</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">point</span></code></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -271,11 +261,11 @@ polygon is not empty and is equal to the area of the polygon</p>
 <dd><p>Returns the nearest polygon indexed to a query point based on
 various rules.</p>
 <p>nearest(Polygon) -&gt; Polygon</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>query_point</strong><span class="classifier">a point to find the nearest indexed polygon to</span></dt><dd></dd>
-<dt><strong>rule</strong><span class="classifier">representative point for polygon in nearest query.</span></dt><dd><p>vertex – measures distance between vertices and query_point
+<dd class="field-odd"><dl>
+<dt><strong>query_point</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">a</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">point</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <a class="reference internal" href="#libpysal.cg.PolygonLocator.nearest" title="libpysal.cg.PolygonLocator.nearest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nearest</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">indexed</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">polygon</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code></span></dt><dd></dd>
+<dt><strong>rule</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">representative</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">point</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">for</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">polygon</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">in</span></code> <a class="reference internal" href="#libpysal.cg.PolygonLocator.nearest" title="libpysal.cg.PolygonLocator.nearest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nearest</span></code></a> query.</span></dt><dd><p>vertex – measures distance between vertices and query_point
 centroid – measures distance between centroid and
 query_point
 edge   – measures the distance between edges and query_point</p>
@@ -339,12 +329,12 @@ polygon is not empty and is no larger than the area of the polygon</p>
 <dd><p>Returns the indexed polygons located within some distance of an
 origin point based on various rules.</p>
 <p>proximity(Polygon, number) -&gt; Polygon list</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>origin</strong><span class="classifier">the point to find indexed polygons near</span></dt><dd></dd>
-<dt><strong>r</strong><span class="classifier">the maximum distance to find indexed polygon from the origin point</span></dt><dd></dd>
-<dt><strong>rule</strong><span class="classifier">representative point for polygon in nearest query.</span></dt><dd><p>vertex – measures distance between vertices and query_point
+<dd class="field-odd"><dl>
+<dt><strong>origin</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">point</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">indexed</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">polygons</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">near</span></code></span></dt><dd></dd>
+<dt><strong>r</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">indexed</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">polygon</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">from</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">origin</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">point</span></code></span></dt><dd></dd>
+<dt><strong>rule</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">representative</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">point</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">for</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">polygon</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">in</span></code> <a class="reference internal" href="#libpysal.cg.PolygonLocator.nearest" title="libpysal.cg.PolygonLocator.nearest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nearest</span></code></a> query.</span></dt><dd><p>vertex – measures distance between vertices and query_point
 centroid – measures distance between centroid and
 query_point
 edge   – measures the distance between edges and query_point</p>
@@ -370,10 +360,10 @@ edge   – measures the distance between edges and query_point</p>
 <code class="sig-name descname">region</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">region_rect</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/cg/locators.html#PolygonLocator.region"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.cg.PolygonLocator.region" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the indexed polygons located inside a rectangular query region.</p>
 <p>region(Rectangle) -&gt; Polygon list</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>region_rect</strong><span class="classifier">the rectangular range to find indexed polygons in</span></dt><dd></dd>
+<dd class="field-odd"><dl>
+<dt><strong>region_rect</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">rectangular</span></code> <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#range" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">range</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">indexed</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">polygons</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">in</span></code></span></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -412,7 +402,7 @@ edge   – measures the distance between edges and query_point</p>
     </p>
     <p>
         &copy; Copyright 2018-, pysal developers.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
 </footer>

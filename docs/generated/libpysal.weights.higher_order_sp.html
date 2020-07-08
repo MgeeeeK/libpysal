@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>libpysal.weights.higher_order_sp &#8212; libpysal v4.2.2 Manual</title>
+    <title>libpysal.weights.higher_order_sp &#8212; libpysal v4.3.0 Manual</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pysal-styles.css" />
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           libpysal</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -70,18 +70,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html">Weights from GeoDataFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Weights-from-shapefiles-(without-geopandas)">Weights from shapefiles (without geopandas)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Lattice-Weights">Lattice Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Handling-nonplanar-geometries">Handling nonplanar geometries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html">Voronoi Polygons for 2-D Point Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html#Voronoi-Weights">Voronoi Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html">Datasets for use with libpysal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Backwards-compatibility-is-maintained">Backwards compatibility is maintained</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#available-is-updated"><code class="docutils literal notranslate"><span class="pre">available</span></code> is updated</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Remote-datasets">Remote datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Other-Remotes">Other Remotes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Grabbing-all-the-remotes">Grabbing all the remotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#spatial-weights">Spatial Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#example-datasets">Example Datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
@@ -141,29 +131,29 @@
 <dt id="libpysal.weights.higher_order_sp">
 <code class="sig-prename descclassname">libpysal.weights.</code><code class="sig-name descname">higher_order_sp</code><span class="sig-paren">(</span><em class="sig-param">w</em>, <em class="sig-param">k=2</em>, <em class="sig-param">shortest_path=True</em>, <em class="sig-param">diagonal=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/weights/util.html#higher_order_sp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.weights.higher_order_sp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contiguity weights for either a sparse W or W  for order k.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>w</strong><span class="classifier">W</span></dt><dd><p>sparse_matrix, spatial weights object or
+<dd class="field-odd"><dl>
+<dt><strong>w</strong><span class="classifier"><a class="reference internal" href="libpysal.weights.W.html#libpysal.weights.W" title="libpysal.weights.W"><code class="xref py py-obj docutils literal notranslate"><span class="pre">W</span></code></a></span></dt><dd><p>sparse_matrix, spatial weights object or
 scipy.sparse.csr.csr_instance</p>
 </dd>
-<dt><strong>k</strong><span class="classifier">int</span></dt><dd><p>Order of contiguity</p>
+<dt><strong>k</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a></span></dt><dd><p>Order of contiguity</p>
 </dd>
-<dt><strong>shortest_path</strong><span class="classifier">boolean</span></dt><dd><p>True: i,j and k-order neighbors if the
+<dt><strong>shortest_path</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.8)"><span class="xref std std-ref">bool</span></a></span></dt><dd><p>True: i,j and k-order neighbors if the
 shortest path for i,j is k.
 False: i,j are k-order neighbors if there
 is a path from i,j of length k.</p>
 </dd>
-<dt><strong>diagonal</strong><span class="classifier">boolean</span></dt><dd><p>True:  keep k-order (i,j) joins when i==j
+<dt><strong>diagonal</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.8)"><span class="xref std std-ref">bool</span></a></span></dt><dd><p>True:  keep k-order (i,j) joins when i==j
 False: remove k-order (i,j) joins when i==j</p>
 </dd>
-<dt><strong>**kwargs</strong><span class="classifier">keyword arguments</span></dt><dd><p>optional arguments for <code class="xref py py-class docutils literal notranslate"><span class="pre">pysal.weights.W</span></code></p>
+<dt><strong>**kwargs</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/keyword.html#module-keyword" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyword</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">arguments</span></code></span></dt><dd><p>optional arguments for <code class="xref py py-class docutils literal notranslate"><span class="pre">pysal.weights.W</span></code></p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>wk</strong><span class="classifier">W</span></dt><dd><p>WSP, type matches type of w argument</p>
+<dd class="field-even"><dl>
+<dt><strong>wk</strong><span class="classifier"><a class="reference internal" href="libpysal.weights.W.html#libpysal.weights.W" title="libpysal.weights.W"><code class="xref py py-obj docutils literal notranslate"><span class="pre">W</span></code></a></span></dt><dd><p>WSP, type matches type of w argument</p>
 </dd>
 </dl>
 </dd>
@@ -215,7 +205,7 @@ False: remove k-order (i,j) joins when i==j</p>
     </p>
     <p>
         &copy; Copyright 2018-, pysal developers.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
 </footer>

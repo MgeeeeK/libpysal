@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>libpysal.cg.Line &#8212; libpysal v4.2.2 Manual</title>
+    <title>libpysal.cg.Line &#8212; libpysal v4.3.0 Manual</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pysal-styles.css" />
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           libpysal</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -70,18 +70,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html">Weights from GeoDataFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Weights-from-shapefiles-(without-geopandas)">Weights from shapefiles (without geopandas)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Lattice-Weights">Lattice Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Handling-nonplanar-geometries">Handling nonplanar geometries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html">Voronoi Polygons for 2-D Point Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html#Voronoi-Weights">Voronoi Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html">Datasets for use with libpysal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Backwards-compatibility-is-maintained">Backwards compatibility is maintained</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#available-is-updated"><code class="docutils literal notranslate"><span class="pre">available</span></code> is updated</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Remote-datasets">Remote datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Other-Remotes">Other Remotes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Grabbing-all-the-remotes">Grabbing all the remotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#spatial-weights">Spatial Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#example-datasets">Example Datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
@@ -141,12 +131,12 @@
 <dt id="libpysal.cg.Line">
 <em class="property">class </em><code class="sig-prename descclassname">libpysal.cg.</code><code class="sig-name descname">Line</code><span class="sig-paren">(</span><em class="sig-param">m</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/cg/shapes.html#Line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.cg.Line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Geometric representation of line objects.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>m</strong><span class="classifier">float</span></dt><dd><p>slope</p>
+<dd class="field-odd"><dl>
+<dt><strong>m</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>slope</p>
 </dd>
-<dt><strong>b</strong><span class="classifier">float</span></dt><dd><p>y-intercept</p>
+<dt><strong>b</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>y-intercept</p>
 </dd>
 </dl>
 </dd>
@@ -158,11 +148,11 @@
 <p>__init__(number, number) -&gt; Line</p>
 <p>Test tag: &lt;tc&gt;#is#Line.__init__&lt;/tc&gt;
 Test tag: &lt;tc&gt;#tests#Line.__init__&lt;/tc&gt;</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>m</strong><span class="classifier">the slope of the line</span></dt><dd></dd>
-<dt><strong>b</strong><span class="classifier">the y-intercept of the line</span></dt><dd></dd>
+<dd class="field-odd"><dl>
+<dt><strong>m</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">slope</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">line</span></code></span></dt><dd></dd>
+<dt><strong>b</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> y-intercept <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">line</span></code></span></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -199,10 +189,10 @@ Test tag: &lt;tc&gt;#tests#Line.__init__&lt;/tc&gt;</p>
 <code class="sig-name descname">x</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/cg/shapes.html#Line.x"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.cg.Line.x" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the x-value of the line at a particular y-value.</p>
 <p>x(number) -&gt; number</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>y</strong><span class="classifier">the y-value to compute x at</span></dt><dd></dd>
+<dd class="field-odd"><dl>
+<dt><strong>y</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> y-value <code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">compute</span></code> <a class="reference internal" href="#libpysal.cg.Line.x" title="libpysal.cg.Line.x"><code class="xref py py-obj docutils literal notranslate"><span class="pre">x</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">at</span></code></span></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -219,10 +209,10 @@ Test tag: &lt;tc&gt;#tests#Line.__init__&lt;/tc&gt;</p>
 <code class="sig-name descname">y</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/cg/shapes.html#Line.y"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.cg.Line.y" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the y-value of the line at a particular x-value.</p>
 <p>y(number) -&gt; number</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>x</strong><span class="classifier">the x-value to compute y at</span></dt><dd></dd>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> x-value <code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">compute</span></code> <a class="reference internal" href="#libpysal.cg.Line.y" title="libpysal.cg.Line.y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">y</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">at</span></code></span></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -258,7 +248,7 @@ Test tag: &lt;tc&gt;#tests#Line.__init__&lt;/tc&gt;</p>
     </p>
     <p>
         &copy; Copyright 2018-, pysal developers.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
 </footer>

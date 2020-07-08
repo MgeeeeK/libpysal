@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>libpysal.cg.Rectangle &#8212; libpysal v4.2.2 Manual</title>
+    <title>libpysal.cg.Rectangle &#8212; libpysal v4.3.0 Manual</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pysal-styles.css" />
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           libpysal</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -70,18 +70,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html">Weights from GeoDataFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Weights-from-shapefiles-(without-geopandas)">Weights from shapefiles (without geopandas)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Lattice-Weights">Lattice Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Handling-nonplanar-geometries">Handling nonplanar geometries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html">Voronoi Polygons for 2-D Point Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html#Voronoi-Weights">Voronoi Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html">Datasets for use with libpysal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Backwards-compatibility-is-maintained">Backwards compatibility is maintained</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#available-is-updated"><code class="docutils literal notranslate"><span class="pre">available</span></code> is updated</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Remote-datasets">Remote datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Other-Remotes">Other Remotes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Grabbing-all-the-remotes">Grabbing all the remotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#spatial-weights">Spatial Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#example-datasets">Example Datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
@@ -141,16 +131,16 @@
 <dt id="libpysal.cg.Rectangle">
 <em class="property">class </em><code class="sig-prename descclassname">libpysal.cg.</code><code class="sig-name descname">Rectangle</code><span class="sig-paren">(</span><em class="sig-param">left</em>, <em class="sig-param">lower</em>, <em class="sig-param">right</em>, <em class="sig-param">upper</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/cg/shapes.html#Rectangle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.cg.Rectangle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Geometric representation of rectangle objects.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>left</strong><span class="classifier">float</span></dt><dd><p>Minimum x-value of the rectangle</p>
+<dd class="field-odd"><dl>
+<dt><strong>left</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>Minimum x-value of the rectangle</p>
 </dd>
-<dt><strong>lower</strong><span class="classifier">float</span></dt><dd><p>Minimum y-value of the rectangle</p>
+<dt><strong>lower</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>Minimum y-value of the rectangle</p>
 </dd>
-<dt><strong>right</strong><span class="classifier">float</span></dt><dd><p>Maximum x-value of the rectangle</p>
+<dt><strong>right</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>Maximum x-value of the rectangle</p>
 </dd>
-<dt><strong>upper</strong><span class="classifier">float</span></dt><dd><p>Maximum y-value of the rectangle</p>
+<dt><strong>upper</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>Maximum y-value of the rectangle</p>
 </dd>
 </dl>
 </dd>
@@ -160,13 +150,13 @@
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">left</em>, <em class="sig-param">lower</em>, <em class="sig-param">right</em>, <em class="sig-param">upper</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/cg/shapes.html#Rectangle.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.cg.Rectangle.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a Rectangle object.</p>
 <p>__init__(number, number, number, number) -&gt; Rectangle</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>left</strong><span class="classifier">the minimum x-value of the rectangle</span></dt><dd></dd>
-<dt><strong>lower</strong><span class="classifier">the minimum y-value of the rectangle</span></dt><dd></dd>
-<dt><strong>right</strong><span class="classifier">the maximum x-value of the rectangle</span></dt><dd></dd>
-<dt><strong>upper</strong><span class="classifier">the maximum y-value of the rectangle</span></dt><dd></dd>
+<dd class="field-odd"><dl>
+<dt><strong>left</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">minimum</span></code> x-value <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">rectangle</span></code></span></dt><dd></dd>
+<dt><strong>lower</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">minimum</span></code> y-value <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">rectangle</span></code></span></dt><dd></dd>
+<dt><strong>right</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum</span></code> x-value <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">rectangle</span></code></span></dt><dd></dd>
+<dt><strong>upper</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum</span></code> y-value <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">rectangle</span></code></span></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -251,10 +241,10 @@
 <code class="sig-name descname">set_centroid</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">new_center</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/cg/shapes.html#Rectangle.set_centroid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.cg.Rectangle.set_centroid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Moves the rectangle center to a new specified point.</p>
 <p>set_centroid(Point) -&gt; Point</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>new_center</strong><span class="classifier">the new location of the centroid of the polygon</span></dt><dd></dd>
+<dd class="field-odd"><dl>
+<dt><strong>new_center</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">new</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">location</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">centroid</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">polygon</span></code></span></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -278,10 +268,10 @@
 <code class="sig-name descname">set_scale</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">scale</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/cg/shapes.html#Rectangle.set_scale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.cg.Rectangle.set_scale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rescales the rectangle around its center.</p>
 <p>set_scale(number) -&gt; number</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>scale</strong><span class="classifier">the ratio of the new scale to the old scale (e.g. 1.0 is current size)</span></dt><dd></dd>
+<dd class="field-odd"><dl>
+<dt><strong>scale</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">ratio</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">new</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">the</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">old</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code> (e.g. 1.0 <code class="xref py py-obj docutils literal notranslate"><span class="pre">is</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">current</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>)</span></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -337,7 +327,7 @@
     </p>
     <p>
         &copy; Copyright 2018-, pysal developers.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
 </footer>

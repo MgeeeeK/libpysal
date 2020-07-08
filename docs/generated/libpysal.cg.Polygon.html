@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>libpysal.cg.Polygon &#8212; libpysal v4.2.2 Manual</title>
+    <title>libpysal.cg.Polygon &#8212; libpysal v4.3.0 Manual</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pysal-styles.css" />
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           libpysal</a>
-        <span class="navbar-text navbar-version pull-left"><b>4.2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>4.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -70,18 +70,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html">Weights from GeoDataFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Weights-from-shapefiles-(without-geopandas)">Weights from shapefiles (without geopandas)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Lattice-Weights">Lattice Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/weights.html#Handling-nonplanar-geometries">Handling nonplanar geometries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html">Voronoi Polygons for 2-D Point Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/voronoi.html#Voronoi-Weights">Voronoi Weights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html">Datasets for use with libpysal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Backwards-compatibility-is-maintained">Backwards compatibility is maintained</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#available-is-updated"><code class="docutils literal notranslate"><span class="pre">available</span></code> is updated</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Remote-datasets">Remote datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Other-Remotes">Other Remotes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/examples.html#Grabbing-all-the-remotes">Grabbing all the remotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#spatial-weights">Spatial Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#example-datasets">Example Datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
@@ -141,22 +131,22 @@
 <dt id="libpysal.cg.Polygon">
 <em class="property">class </em><code class="sig-prename descclassname">libpysal.cg.</code><code class="sig-name descname">Polygon</code><span class="sig-paren">(</span><em class="sig-param">vertices</em>, <em class="sig-param">holes=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/cg/shapes.html#Polygon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.cg.Polygon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Geometric representation of polygon objects.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><a class="reference internal" href="#libpysal.cg.Polygon.vertices" title="libpysal.cg.Polygon.vertices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertices</span></code></a><span class="classifier">list</span></dt><dd><p>Returns the vertices of the polygon in clockwise order.</p>
+<dd class="field-odd"><dl>
+<dt><a class="reference internal" href="#libpysal.cg.Polygon.vertices" title="libpysal.cg.Polygon.vertices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertices</span></code></a><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a></span></dt><dd><p>Returns the vertices of the polygon in clockwise order.</p>
 </dd>
-<dt><a class="reference internal" href="#libpysal.cg.Polygon.len" title="libpysal.cg.Polygon.len"><code class="xref py py-obj docutils literal notranslate"><span class="pre">len</span></code></a><span class="classifier">int</span></dt><dd><p>Returns the number of vertices in the polygon.</p>
+<dt><a class="reference internal" href="#libpysal.cg.Polygon.len" title="libpysal.cg.Polygon.len"><code class="xref py py-obj docutils literal notranslate"><span class="pre">len</span></code></a><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a></span></dt><dd><p>Returns the number of vertices in the polygon.</p>
 </dd>
-<dt><a class="reference internal" href="#libpysal.cg.Polygon.perimeter" title="libpysal.cg.Polygon.perimeter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perimeter</span></code></a><span class="classifier">float</span></dt><dd><p>Returns the perimeter of the polygon.</p>
+<dt><a class="reference internal" href="#libpysal.cg.Polygon.perimeter" title="libpysal.cg.Polygon.perimeter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">perimeter</span></code></a><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>Returns the perimeter of the polygon.</p>
 </dd>
-<dt><a class="reference internal" href="#libpysal.cg.Polygon.bounding_box" title="libpysal.cg.Polygon.bounding_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bounding_box</span></code></a><span class="classifier">Rectangle</span></dt><dd><p>Returns the bounding box of the polygon.</p>
+<dt><a class="reference internal" href="#libpysal.cg.Polygon.bounding_box" title="libpysal.cg.Polygon.bounding_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bounding_box</span></code></a><span class="classifier"><a class="reference internal" href="libpysal.cg.Rectangle.html#libpysal.cg.Rectangle" title="libpysal.cg.Rectangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Rectangle</span></code></a></span></dt><dd><p>Returns the bounding box of the polygon.</p>
 </dd>
-<dt><a class="reference internal" href="#libpysal.cg.Polygon.bbox" title="libpysal.cg.Polygon.bbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bbox</span></code></a><span class="classifier">List</span></dt><dd><p>Returns the bounding box of the polygon as a list</p>
+<dt><a class="reference internal" href="#libpysal.cg.Polygon.bbox" title="libpysal.cg.Polygon.bbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bbox</span></code></a><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List</span></code></span></dt><dd><p>Returns the bounding box of the polygon as a list</p>
 </dd>
-<dt><a class="reference internal" href="#libpysal.cg.Polygon.area" title="libpysal.cg.Polygon.area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">area</span></code></a><span class="classifier">float</span></dt><dd><p>Returns the area of the polygon.</p>
+<dt><a class="reference internal" href="#libpysal.cg.Polygon.area" title="libpysal.cg.Polygon.area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">area</span></code></a><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></span></dt><dd><p>Returns the area of the polygon.</p>
 </dd>
-<dt><a class="reference internal" href="#libpysal.cg.Polygon.centroid" title="libpysal.cg.Polygon.centroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centroid</span></code></a><span class="classifier">tuple</span></dt><dd><p>Returns the centroid of the polygon</p>
+<dt><a class="reference internal" href="#libpysal.cg.Polygon.centroid" title="libpysal.cg.Polygon.centroid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centroid</span></code></a><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></span></dt><dd><p>Returns the centroid of the polygon</p>
 </dd>
 </dl>
 </dd>
@@ -166,11 +156,11 @@
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">vertices</em>, <em class="sig-param">holes=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libpysal/cg/shapes.html#Polygon.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libpysal.cg.Polygon.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a polygon created from the objects specified.</p>
 <p>__init__(Point list or list of Point lists, holes list ) -&gt; Polygon</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>vertices</strong><span class="classifier">list – a list of vertices or a list of lists of vertices.</span></dt><dd></dd>
-<dt><strong>holes</strong><span class="classifier">list – a list of sub-polygons to be considered as holes.</span></dt><dd></dd>
+<dd class="field-odd"><dl>
+<dt><strong>vertices</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> – <code class="xref py py-obj docutils literal notranslate"><span class="pre">a</span></code> <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <a class="reference internal" href="#libpysal.cg.Polygon.vertices" title="libpysal.cg.Polygon.vertices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vertices</span></code></a> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">a</span></code> <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">lists</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> vertices.</span></dt><dd></dd>
+<dt><strong>holes</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> – <code class="xref py py-obj docutils literal notranslate"><span class="pre">a</span></code> <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> <code class="xref py py-obj docutils literal notranslate"><span class="pre">of</span></code> sub-polygons <code class="xref py py-obj docutils literal notranslate"><span class="pre">to</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">be</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">considered</span></code> <code class="xref py py-obj docutils literal notranslate"><span class="pre">as</span></code> holes.</span></dt><dd></dd>
 <dt><strong>is_quad_tree_structure_built</strong></dt><dd><p>: bool – record if the quad tree structure has been built for this polygon. This quad tree structure could help speed up the contains_point test</p>
 </dd>
 </dl>
@@ -425,7 +415,7 @@ results</p>
     </p>
     <p>
         &copy; Copyright 2018-, pysal developers.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.<br/>
     </p>
   </div>
 </footer>
