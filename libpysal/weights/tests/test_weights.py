@@ -156,13 +156,13 @@ class TestW(unittest.TestCase):
 
     def test_neighbor_offsets(self):
         d = {0: [3, 1],
-             1: [0, 4, 2],
-             2: [1, 5],
-             3: [0, 6, 4],
-             4: [1, 3, 7, 5],
-             5: [2, 4, 8],
-             6: [3, 7],
-             7: [4, 6, 8],
+             1: [4, 2, 0],
+             2: [5, 1],
+             3: [6, 4, 0],
+             4: [7, 5, 1, 3],
+             5: [8, 2, 4],
+             6: [7, 3],
+             7: [8, 4, 6],
              8: [5, 7]}
 
         self.assertEqual(self.w3x3.neighbor_offsets, d)
