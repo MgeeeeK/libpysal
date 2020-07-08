@@ -110,7 +110,6 @@ def hexLat2W(nrows=5, ncols=5, **kwargs):
                     w[i] = w.get(i, []) + jne
                     w[i] = w.get(i, []) + jnw
 
-
     return W(w, **kwargs)
 
 
@@ -158,32 +157,16 @@ def lat2W(nrows=5, ncols=5, contiguity="rook", id_type='int', **kwargs):
     >>> w9[3] == {0: 1.0, 4: 1.0, 6: 1.0}
     True
     """
-    n = nrows * ncols
-
-    w = {}
-    for i in range(n):
-        w[i] = np.array(list(lat2SW(nrows, ncols, contiguity).todok()[i].keys()))[:,1].tolist()
-
-    weights = {}
-    for key in w:
-        weights[key] = [1.] * len(w[key])
-    ids = list(range(n))
+    sp_w = lat2SW(nrows, ncols, contiguity, **kwargs)
+    sp_w = WSP(sp_w)
+    w = sp_w.to_W()
     if id_type == 'string':
-        ids = ['id' + str(i) for i in ids]
+        ids = ['id' + str(i) for i in w.id_order]
+        w.remap_ids(ids)
     elif id_type == 'float':
-        ids = [i * 1. for i in ids]
-    if id_type == 'string' or id_type == 'float':
-        id_dict = dict(list(zip(list(range(n)), ids)))
-        alt_w = {}
-        alt_weights = {}
-        for i in w:
-            values = [id_dict[j] for j in w[i]]
-            key = id_dict[i]
-            alt_w[key] = values
-            alt_weights[key] = weights[i]
-        w = alt_w
-        weights = alt_weights
-    return W(w, weights, ids=ids, id_order=ids[:], **kwargs)
+        ids = [i * 1. for i in w.id_order]
+        w.remap_ids(ids)
+    return w
 
 
 def block_weights(regimes, ids=None, sparse=False, **kwargs):
@@ -1101,35 +1084,27 @@ def min_threshold_distance(data, p=2):
 def lat2SW(nrows=3, ncols=5, criterion="rook", row_st=False):
     """
     Create a sparse W matrix for a regular lattice.
-
     Parameters
     ----------
-
-    nrows      : int
-                 number of rows
-    ncols      : int
-                 number of columns
-    criterion : {"rook", "queen", "bishop"}
-                 type of contiguity. Default is rook.
-    row_st     : boolean
-                 If True, the created sparse W object is row-standardized so
-                 every row sums up to one. Defaults to False.
-
+    nrows   : int
+              number of rows
+    ncols   : int
+              number of columns
+    rook    : {"rook", "queen", "bishop"}
+              type of contiguity. Default is rook.
+    row_st  : boolean
+              If True, the created sparse W object is row-standardized so
+              every row sums up to one. Defaults to False.
     Returns
     -------
-
     w : scipy.sparse.dia_matrix
         instance of a scipy sparse matrix
-
     Notes
     -----
-
     Observations are row ordered: first k observations are in row 0, next k in row 1, and so on.
     This method directly creates the W matrix using the strucuture of the contiguity type.
-
     Examples
     --------
-
     >>> from libpysal.weights import lat2SW
     >>> w9 = lat2SW(3,3)
     >>> w9[0,1] == 1
@@ -1145,34 +1120,28 @@ def lat2SW(nrows=3, ncols=5, criterion="rook", row_st=False):
     diagonals = []
     offsets = []
     if criterion == "rook" or criterion == "queen":
-        if ncols>1:
-            d = np.ones((1, n))
-            for i in range(ncols - 1, n, ncols):
-                d[0, i] = 0
-            if criterion == "queen" and ncols==2:
-                d = np.ones((1, n))
-            diagonals.append(d)
-            offsets.append(-1)
+        d = np.ones((1, n))
+        for i in range(ncols - 1, n, ncols):
+            d[0, i] = 0
+        diagonals.append(d)
+        offsets.append(-1)
 
-        if ncols>=1:
-            d = np.ones((1, n))
-            diagonals.append(d)
-            offsets.append(-ncols)
+        d = np.ones((1, n))
+        diagonals.append(d)
+        offsets.append(-ncols)
 
     if criterion == "queen" or criterion == "bishop":
-        if (criterion == "bishop" and ncols>=2) or ncols>2:
-            d = np.ones((1, n))
-            for i in range(0, n, ncols):
-                d[0, i] = 0
-            diagonals.append(d)
-            offsets.append(-(ncols - 1))
+        d = np.ones((1, n))
+        for i in range(0, n, ncols):
+            d[0, i] = 0
+        diagonals.append(d)
+        offsets.append(-(ncols - 1))
 
         d = np.ones((1, n))
         for i in range(ncols - 1, n, ncols):
             d[0, i] = 0
         diagonals.append(d)
         offsets.append(-(ncols + 1))
-        
     data = np.concatenate(diagonals)
     offsets = np.array(offsets)
     m = sparse.dia_matrix((data, offsets), shape=(n, n), dtype=np.int8)
