@@ -1120,22 +1120,27 @@ def lat2SW(nrows=3, ncols=5, criterion="rook", row_st=False):
     diagonals = []
     offsets = []
     if criterion == "rook" or criterion == "queen":
-        d = np.ones((1, n))
-        for i in range(ncols - 1, n, ncols):
-            d[0, i] = 0
-        diagonals.append(d)
-        offsets.append(-1)
+        if ncols>1:
+            d = np.ones((1, n))
+            for i in range(ncols - 1, n, ncols):
+                d[0, i] = 0
+            if criterion == "queen" and ncols==2:
+                d = np.ones((1, n))
+            diagonals.append(d)
+            offsets.append(-1)
 
-        d = np.ones((1, n))
-        diagonals.append(d)
-        offsets.append(-ncols)
+        if ncols>=1:
+            d = np.ones((1, n))
+            diagonals.append(d)
+            offsets.append(-ncols)
 
     if criterion == "queen" or criterion == "bishop":
-        d = np.ones((1, n))
-        for i in range(0, n, ncols):
-            d[0, i] = 0
-        diagonals.append(d)
-        offsets.append(-(ncols - 1))
+        if (criterion == "bishop" and ncols>=2) or ncols>2:
+            d = np.ones((1, n))
+            for i in range(0, n, ncols):
+                d[0, i] = 0
+            diagonals.append(d)
+            offsets.append(-(ncols - 1))
 
         d = np.ones((1, n))
         for i in range(ncols - 1, n, ncols):
