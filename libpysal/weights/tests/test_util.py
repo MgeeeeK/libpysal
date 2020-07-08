@@ -181,13 +181,13 @@ class Testutil(unittest.TestCase):
         w = lat2W(3, 2)
         wid_order = [0, 1, 2, 3, 4, 5]
         self.assertEqual(wid_order, w.id_order)
-        wneighbors0 = [1, 2]
+        wneighbors0 = [2, 1]
         self.assertEqual(wneighbors0, w.neighbors[0])
         old_to_new = {0: 'a', 1: 'b', 2: 'c', 3: 'd', 4: 'e', 5: 'f'}
         w_new = util.remap_ids(w, old_to_new)
         w_newid_order = ['a', 'b', 'c', 'd', 'e', 'f']
         self.assertEqual(w_newid_order, w_new.id_order)
-        w_newdneighborsa = ['b', 'c']
+        w_newdneighborsa = ['c', 'b']
         self.assertEqual(w_newdneighborsa, w_new.neighbors['a'])
 
     def test_get_ids_shp(self):
