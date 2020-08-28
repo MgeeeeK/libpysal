@@ -11,14 +11,13 @@ class Testraster(unittest.TestCase):
     def setUp(self):
         self.da1 = raster.testDataArray()
         self.da2 = raster.testDataArray((1, 4, 4), missing_vals=False)
-        self.da3 = self.da2.rename(
-            {'band': 'layer', 'x': 'longitude', 'y': 'latitude'})
+        self.da3 = self.da2.rename({"band": "layer", "x": "longitude", "y": "latitude"})
         self.data1 = pd.Series(np.ones(5))
 
     def test_da2W(self):
-        w1 = raster.da2W(self.da1, "queen")
-        self.assertEqual(w1[13], {8: 1, 14: 1})
-        self.assertEqual(w1[14], {11: 1, 13: 1})
+        w1 = raster.da2W(self.da1, "queen", k=2)
+        self.assertEqual(w1[13], {11: 1, 14: 1, 8: 1})
+        self.assertEqual(w1[14], {8: 1, 13: 1, 11: 1})
         self.assertEqual(w1.n, 5)
         self.assertEqual(w1.index.names, self.da1.to_series().index.names)
         self.assertEqual(w1.index.tolist()[0], (1, 90.0, 180.0))
@@ -34,7 +33,7 @@ class Testraster(unittest.TestCase):
         coords_labels = {
             "z_label": "layer",
             "y_label": "latitude",
-            "x_label": "longitude"
+            "x_label": "longitude",
         }
         w3 = raster.da2W(self.da3, z_value=1, coords_labels=coords_labels)
         self.assertEqual(w3[6], {11: 1, 9: 1, 10: 1, 7: 1, 1: 1, 3: 1, 2: 1, 5: 1})
@@ -43,18 +42,15 @@ class Testraster(unittest.TestCase):
         self.assertEqual(w3.index.names, self.da3.to_series().index.names)
         self.assertEqual(w3.index.tolist(), self.da3.to_series().index.tolist())
 
-
-        
-
     def test_da2WSP(self):
-        w1 = raster.da2WSP(self.da1, "queen")
+        w1 = raster.da2WSP(self.da1, "queen", k=2, include_nas=True)
         rows, cols = w1.sparse.shape
         n = rows * cols
         pct_nonzero = w1.sparse.nnz / float(n)
-        self.assertEqual(pct_nonzero, 0.24)
+        self.assertEqual(pct_nonzero, 0.48)
         data = w1.sparse.todense().tolist()
-        self.assertEqual(data[3], [0, 1, 0, 0, 1])
-        self.assertEqual(data[4], [0, 0, 1, 1, 0])
+        self.assertEqual(data[3], [0, 1, 1, 0, 1])
+        self.assertEqual(data[4], [0, 1, 1, 1, 0])
         self.assertEqual(w1.index.names, self.da1.to_series().index.names)
         self.assertEqual(w1.index.tolist()[0], (1, 90.0, 180.0))
         self.assertEqual(w1.index.tolist()[1], (1, -30.0, -180.0))
@@ -84,6 +80,6 @@ class Testraster(unittest.TestCase):
 
 suite = unittest.TestLoader().loadTestsFromTestCase(Testraster)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     runner = unittest.TextTestRunner()
     runner.run(suite)
