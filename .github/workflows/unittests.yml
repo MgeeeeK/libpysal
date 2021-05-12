@@ -49,7 +49,7 @@
        - run: python -c 'import libpysal; libpysal.examples.fetch_all()'
        - run: py.test -v libpysal --cov=libpysal --cov-report=xml
        - name: codecov (${{ matrix.os }}, ${{ matrix.environment-file }})
-         uses: codecov/codecov-action@v1
+         uses: codecov/codecov-action@v1.5.0
          with:
            token: ${{ secrets.CODECOV_TOKEN }}
            file: ./coverage.xml
